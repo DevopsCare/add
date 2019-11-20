@@ -9,7 +9,7 @@ resource "aws_lightsail_static_ip_attachment" "wordpress" {
 }
 
 resource "aws_lightsail_static_ip" "wordpress" {
-  name = module.label.id
+  name = module.label_ip.id
 }
 
 resource "aws_lightsail_instance" "wordpress" {

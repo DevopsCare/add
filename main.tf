@@ -7,3 +7,9 @@ module "label" {
   environment = "add"
   name        = "wordpress"
 }
+
+module "label_ip" {
+  source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.15.0"
+  context    = module.label.context
+  attributes = ["static_ip"]
+}
