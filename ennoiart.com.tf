@@ -1,27 +1,31 @@
 module "ennoiart" {
-  source    = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.15.0"
-  namespace = "ennoiart"
+  source      = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.15.0"
+  namespace   = "ennoiart"
+  environment = "ennoiart.com"
 }
 
-resource "aws_route53_zone" "ennoiart_com" {
-  name = "ennoiart.com"
-  tags = module.ennoiart.tags
+resource "cloudflare_zone" "ennoiart_com" {
+  zone = "ennoiart.com"
+  plan = "free"
+  type = "partial"
 }
 
-resource "aws_route53_record" "ennoiart_com" {
-  zone_id = aws_route53_zone.ennoiart_com.id
-  name    = aws_route53_zone.ennoiart_com.name
+resource "cloudflare_record" "ennoiart_com" {
+  zone_id = cloudflare_zone.ennoiart_com.zone
+  name    = module.ennoiart.environment
+  value   = aws_lightsail_static_ip.wordpress.ip_address
   type    = "A"
-  ttl     = "86400"
-
-  records = [aws_lightsail_static_ip.wordpress.ip_address]
+  ttl     = 86400
 }
 
-resource "aws_route53_record" "www_ennoiart_com" {
-  zone_id = aws_route53_zone.ennoiart_com.id
-  name    = "www.${aws_route53_zone.ennoiart_com.name}"
+resource "cloudflare_record" "www_ennoiart_com" {
+  zone_id = cloudflare_zone.ennoiart_com.zone
+  name    = "www.${module.ennoiart.environment}"
+  value   = aws_lightsail_static_ip.wordpress.ip_address
   type    = "A"
-  ttl     = "86400"
+  ttl     = 86400
+}
 
-  records = [aws_lightsail_static_ip.wordpress.ip_address]
+output "ennoiart_com_verification_key" {
+  value = cloudflare_zone.ennoiart_com.verification_key
 }
