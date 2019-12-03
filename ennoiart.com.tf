@@ -7,7 +7,7 @@ module "ennoiart" {
 resource "cloudflare_zone" "ennoiart_com" {
   zone = "ennoiart.com"
   plan = "free"
-  type = "partial"
+  type = "full"
 }
 
 resource "cloudflare_record" "ennoiart_com" {
@@ -24,8 +24,4 @@ resource "cloudflare_record" "www_ennoiart_com" {
   value   = aws_lightsail_static_ip.wordpress.ip_address
   type    = "A"
   ttl     = 86400
-}
-
-output "ennoiart_com_verification_key" {
-  value = cloudflare_zone.ennoiart_com.verification_key
 }
