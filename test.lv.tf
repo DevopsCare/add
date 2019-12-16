@@ -12,7 +12,7 @@ resource "cloudflare_zone" "test_lv" {
 
 resource "cloudflare_record" "test_lv" {
   zone_id = cloudflare_zone.test_lv.zone
-  name    = module.ennoiart.environment
+  name    = module.dmitrijsv.environment
   value   = aws_lightsail_static_ip.wordpress.ip_address
   type    = "A"
   ttl     = 86400
@@ -20,7 +20,7 @@ resource "cloudflare_record" "test_lv" {
 
 resource "cloudflare_record" "www_ennoiart_com" {
   zone_id = cloudflare_zone.test_lv.zone
-  name    = "www.${module.ennoiart.environment}"
+  name    = "www.${module.dmitrijsv.environment}"
   value   = aws_lightsail_static_ip.wordpress.ip_address
   type    = "A"
   ttl     = 86400
