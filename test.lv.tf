@@ -12,7 +12,7 @@ resource "cloudflare_zone" "test_lv" {
 
 resource "cloudflare_record" "test_lv" {
   zone_id = cloudflare_zone.test_lv.id
-  name    = cloudflare_zone.test_lv.zone
+  name    = "@"
   value   = local.mikakosha
   type    = "A"
   ttl     = 1
@@ -21,7 +21,7 @@ resource "cloudflare_record" "test_lv" {
 
 resource "cloudflare_record" "www_test_lv" {
   zone_id = cloudflare_zone.test_lv.id
-  name    = "www.${cloudflare_zone.test_lv.zone}"
+  name    = "www"
   value   = local.mikakosha
   type    = "A"
   ttl     = 1
