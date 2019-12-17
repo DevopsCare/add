@@ -11,7 +11,7 @@ resource "cloudflare_zone" "test_lv" {
 }
 
 resource "cloudflare_record" "test_lv" {
-  zone_id = cloudflare_zone.test_lv.zone
+  zone_id = cloudflare_zone.test_lv.id
   name    = module.dmitrijsv.environment
   value   = local.mikakosha
   type    = "A"
@@ -20,7 +20,7 @@ resource "cloudflare_record" "test_lv" {
 }
 
 resource "cloudflare_record" "www_test_lv" {
-  zone_id = cloudflare_zone.test_lv.zone
+  zone_id = cloudflare_zone.test_lv.id
   name    = "www.${module.dmitrijsv.environment}"
   value   = local.mikakosha
   type    = "A"
@@ -29,7 +29,7 @@ resource "cloudflare_record" "www_test_lv" {
 }
 
 resource "cloudflare_record" "mx_test_lv" {
-  zone_id = cloudflare_zone.test_lv.zone
+  zone_id = cloudflare_zone.test_lv.id
   name    = module.dmitrijsv.environment
   value   = "mail.kid.lv"
   type    = "MX"
