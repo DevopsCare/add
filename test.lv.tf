@@ -13,15 +13,23 @@ resource "cloudflare_zone" "test_lv" {
 resource "cloudflare_record" "test_lv" {
   zone_id = cloudflare_zone.test_lv.zone
   name    = module.dmitrijsv.environment
-  value   = aws_lightsail_static_ip.wordpress.ip_address
+  value   = local.mikakosha
   type    = "A"
   ttl     = 86400
 }
 
-resource "cloudflare_record" "www_ennoiart_com" {
+resource "cloudflare_record" "www_test_lv" {
   zone_id = cloudflare_zone.test_lv.zone
   name    = "www.${module.dmitrijsv.environment}"
-  value   = aws_lightsail_static_ip.wordpress.ip_address
+  value   = local.mikakosha
   type    = "A"
+  ttl     = 86400
+}
+
+resource "cloudflare_record" "mx_test_lv" {
+  zone_id = cloudflare_zone.test_lv.zone
+  name    = module.dmitrijsv.environment
+  value   = "mail.kid.lv"
+  type    = "MX"
   ttl     = 86400
 }
