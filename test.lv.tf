@@ -16,6 +16,7 @@ resource "cloudflare_record" "test_lv" {
   value   = local.mikakosha
   type    = "A"
   ttl     = 86400
+  proxied = true
 }
 
 resource "cloudflare_record" "www_test_lv" {
@@ -24,6 +25,7 @@ resource "cloudflare_record" "www_test_lv" {
   value   = local.mikakosha
   type    = "A"
   ttl     = 86400
+  proxied = true
 }
 
 resource "cloudflare_record" "mx_test_lv" {
