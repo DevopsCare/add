@@ -15,7 +15,7 @@ resource "cloudflare_record" "test_lv" {
   name    = module.dmitrijsv.environment
   value   = local.mikakosha
   type    = "A"
-  ttl     = 86400
+  ttl     = 1
   proxied = true
 }
 
@@ -24,7 +24,7 @@ resource "cloudflare_record" "www_test_lv" {
   name    = "www.${module.dmitrijsv.environment}"
   value   = local.mikakosha
   type    = "A"
-  ttl     = 86400
+  ttl     = 1
   proxied = true
 }
 
