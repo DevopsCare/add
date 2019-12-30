@@ -44,3 +44,35 @@ resource "cloudflare_record" "mx_test_lv" {
   type    = "MX"
   ttl     = 86400
 }
+
+resource "cloudflare_record" "ns1_cadmium_test_lv" {
+  zone_id = cloudflare_zone.test_lv.id
+  name    = "cadmium"
+  value   = "ns-1382.awsdns-44.org"
+  type    = "NS"
+  ttl     = 86400
+}
+
+resource "cloudflare_record" "ns2_cadmium_test_lv" {
+  zone_id = cloudflare_zone.test_lv.id
+  name    = "cadmium"
+  value   = "ns-15.awsdns-01.com"
+  type    = "NS"
+  ttl     = 86400
+}
+
+resource "cloudflare_record" "ns3_cadmium_test_lv" {
+  zone_id = cloudflare_zone.test_lv.id
+  name    = "cadmium"
+  value   = "ns-1873.awsdns-42.co.uk"
+  type    = "NS"
+  ttl     = 86400
+}
+
+resource "cloudflare_record" "ns4_cadmium_test_lv" {
+  zone_id = cloudflare_zone.test_lv.id
+  name    = "cadmium"
+  value   = "ns-521.awsdns-01.net"
+  type    = "NS"
+  ttl     = 86400
+}
