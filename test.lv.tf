@@ -1,5 +1,5 @@
 module "dmitrijsv" {
-  source      = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.15.0"
+  source      = "git::https://github.com/cloudposse/terraform-null-label.git?ref=tags/0.16.0"
   namespace   = "dmitrijsv"
   environment = "test.lv"
 }
