@@ -46,7 +46,7 @@ resource "cloudflare_record" "wld-add-hosting_devops_care" {
 
 #### MX and related
 resource "cloudflare_record" "mx1_devops_care" {
-  zone_id  = cloudflare_zone.devops_care.zone
+  zone_id  = cloudflare_zone.devops_care.id
   name     = "@"
   value    = "mail.protonmail.ch."
   type     = "MX"
@@ -54,7 +54,7 @@ resource "cloudflare_record" "mx1_devops_care" {
 }
 
 resource "cloudflare_record" "mx2_devops_care" {
-  zone_id  = cloudflare_zone.devops_care.zone
+  zone_id  = cloudflare_zone.devops_care.id
   name     = "@"
   value    = "mailsec.protonmail.ch."
   type     = "MX"
