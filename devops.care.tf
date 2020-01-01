@@ -36,12 +36,12 @@ resource "cloudflare_record" "add-hosting_devops_care" {
   proxied = true
 }
 
+# Eventually disable and switch to per-host proxied domains
 resource "cloudflare_record" "wld-add-hosting_devops_care" {
   zone_id = cloudflare_zone.devops_care.id
   name    = "*.add-hosting"
   value   = aws_lightsail_static_ip.wordpress.ip_address
   type    = "A"
-  proxied = true
 }
 
 #### MX and related
