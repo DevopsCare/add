@@ -71,7 +71,7 @@ resource "cloudflare_record" "pm_verify_devops_care" {
 resource "cloudflare_record" "spf_devops_care" {
   zone_id = cloudflare_zone.devops_care.id
   name    = "@"
-  value   = "v=spf1 include:_spf.protonmail.ch mx ~all"
+  value   = "v=spf1 include:amazonses.com include:_spf.protonmail.ch mx ~all"
   type    = "TXT"
 }
 
