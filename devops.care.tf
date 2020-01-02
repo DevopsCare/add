@@ -107,3 +107,11 @@ resource "cloudflare_record" "new_devops_care" {
   ttl     = 1
   proxied = true
 }
+
+#### ses verification
+resource "cloudflare_record" "devops_care_ses_verification" {
+  zone_id = cloudflare_zone.devops_care.id
+  name    = "_amazonses.devops.care"
+  value   = aws_ses_domain_identity.main.verification_token
+  type    = "TXT"
+}
