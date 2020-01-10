@@ -37,14 +37,6 @@ resource "cloudflare_record" "new_test_lv" {
   proxied = true
 }
 
-resource "cloudflare_record" "mx_test_lv" {
-  zone_id = cloudflare_zone.test_lv.id
-  name    = "@"
-  value   = "mail.kid.lv."
-  type    = "MX"
-  ttl     = 86400
-}
-
 resource "cloudflare_record" "ns1_cadmium_test_lv" {
   zone_id = cloudflare_zone.test_lv.id
   name    = "cadmium"
