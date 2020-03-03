@@ -1,4 +1,5 @@
 provider "aws" {
+  region = "us-east-1"
 }
 
 module "label" {
@@ -13,3 +14,15 @@ module "label_ip" {
   context    = module.label.context
   attributes = ["static_ip"]
 }
+
+/*
+terraform {
+  backend "remote" {
+    hostname = "app.terraform.io"
+    organization = "devopslv"
+
+    workspaces {
+      name = "devopscare_add"
+    }
+  }
+}*/

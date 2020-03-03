@@ -14,7 +14,7 @@ resource "cloudflare_zone" "devops_care" {
 resource "cloudflare_record" "devops_care" {
   zone_id = cloudflare_zone.devops_care.id
   name    = "@"
-  value   = "www231.wixdns.net."
+  value   = "www231.wixdns.net"
   type    = "CNAME"
   ttl     = 86400
 }
@@ -22,7 +22,7 @@ resource "cloudflare_record" "devops_care" {
 resource "cloudflare_record" "www_devops_care" {
   zone_id = cloudflare_zone.devops_care.id
   name    = "www"
-  value   = "www231.wixdns.net."
+  value   = "www231.wixdns.net"
   type    = "CNAME"
   ttl     = 86400
 }
@@ -48,7 +48,7 @@ resource "cloudflare_record" "wld-add-hosting_devops_care" {
 resource "cloudflare_record" "mx1_devops_care" {
   zone_id  = cloudflare_zone.devops_care.id
   name     = "@"
-  value    = "mail.protonmail.ch."
+  value    = "mail.protonmail.ch"
   type     = "MX"
   priority = 10
 }
@@ -56,7 +56,7 @@ resource "cloudflare_record" "mx1_devops_care" {
 resource "cloudflare_record" "mx2_devops_care" {
   zone_id  = cloudflare_zone.devops_care.id
   name     = "@"
-  value    = "mailsec.protonmail.ch."
+  value    = "mailsec.protonmail.ch"
   type     = "MX"
   priority = 20
 }
