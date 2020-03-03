@@ -12,17 +12,19 @@ resource "cloudflare_zone" "ennoiart_com" {
 
 resource "cloudflare_record" "ennoiart_com" {
   zone_id = cloudflare_zone.ennoiart_com.id
-  name    = module.ennoiart.environment
-  value   = aws_lightsail_static_ip.wordpress.ip_address
+  name    = "@"
   type    = "A"
+  value   = aws_lightsail_static_ip.wordpress.ip_address
+  ttl     = 1
   proxied = true
 }
 
 resource "cloudflare_record" "www_ennoiart_com" {
   zone_id = cloudflare_zone.ennoiart_com.id
-  name    = "www.${module.ennoiart.environment}"
-  value   = aws_lightsail_static_ip.wordpress.ip_address
+  name    = "www"
   type    = "A"
+  value   = aws_lightsail_static_ip.wordpress.ip_address
+  ttl     = 1
   proxied = true
 }
 
