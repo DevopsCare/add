@@ -11,7 +11,7 @@ resource "cloudflare_zone" "ennoiart_com" {
 }
 
 resource "cloudflare_record" "ennoiart_com" {
-  zone_id = cloudflare_zone.ennoiart_com.zone
+  zone_id = cloudflare_zone.ennoiart_com.id
   name    = module.ennoiart.environment
   value   = aws_lightsail_static_ip.wordpress.ip_address
   type    = "A"
@@ -19,7 +19,7 @@ resource "cloudflare_record" "ennoiart_com" {
 }
 
 resource "cloudflare_record" "www_ennoiart_com" {
-  zone_id = cloudflare_zone.ennoiart_com.zone
+  zone_id = cloudflare_zone.ennoiart_com.id
   name    = "www.${module.ennoiart.environment}"
   value   = aws_lightsail_static_ip.wordpress.ip_address
   type    = "A"
