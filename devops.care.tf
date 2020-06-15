@@ -14,15 +14,15 @@ resource "cloudflare_zone" "devops_care" {
 resource "cloudflare_record" "devops_care" {
   zone_id = cloudflare_zone.devops_care.id
   name    = "@"
-  value   = "www231.wixdns.net"
-  type    = "CNAME"
+  value   = aws_lightsail_static_ip.wordpress.ip_address
+  type    = "A"
   ttl     = 86400
 }
 
 resource "cloudflare_record" "www_devops_care" {
   zone_id = cloudflare_zone.devops_care.id
   name    = "www"
-  value   = "www231.wixdns.net"
+  value   = "devops.care"
   type    = "CNAME"
   ttl     = 86400
 }
